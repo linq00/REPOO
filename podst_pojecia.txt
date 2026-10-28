@@ -1,0 +1,17 @@
+repozytorium  - folder gdzie znajduja sie
+ wszystkie pliki oraz histiria ich zmian
+
+github - internet strona dla zapisywania projektow 
+jest zarzadany przez git
+
+git - lokalny program dla zapisywania projektow i ich wersji
+
+commit - dla zapisywania zmain w projektu
+
+branch - dla stworeznia nowej galezi
+
+chekout - dla przelaczenia sie miezy galeziami
+
+merge - dla zlaczenia galezi
+
+rebase - inny sposob dla zlaczenia galezi

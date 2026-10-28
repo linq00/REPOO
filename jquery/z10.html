@@ -1,0 +1,105 @@
+
+<!-- obj event -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+  <script>
+
+$(function(){
+
+//obj event
+
+$(document).on("keydown keyup keypress", function(){
+    $('#eventType').text(event.type);
+})
+
+$(document).on("mousemove", function(){
+    $('#pageX').text(event.pageX);
+    $('#pageY').text(event.pageY);
+})
+
+
+
+
+let pozX = 0;
+let pozY = 0;
+
+$("#jabko").css({
+"margin-left": Math.floor((Math.random()*1000) + 1) + "px",
+"margin-left": Math.floor((Math.random()*1000) + 1) + "px"
+})
+
+$(document).on("keydown", function(){
+        // event.key zwraca nazwę klawisza (np. "Enter", "ArrowUp", "a")
+    if(event.key =='a'){
+        pozX-=10;
+        $("#kw").css("margin-left", pozX +"px")
+    }
+
+      if(event.key =='d'){
+        pozX+=10;
+          $("#kw").css("margin-left", pozX +"px")
+    }
+
+     if(event.key =='w'){
+        pozY+=10;
+          $("#kw").css("margin-top", pozY +"px")
+    }
+
+     if(event.key =='s'){
+        pozY-=10;
+          $("#kw").css("margin-top", pozY +"px")
+    }
+ 
+})
+
+
+})
+
+
+// prezsuwac kw na strzalki
+// pridumac kiedfu  jabko stolknetsa jabloko propadaet a nasz kw uwielicziwaetca na 10 px
+  </script>
+  <style>
+    #kw{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+
+       #jabko{
+        width: 20px;
+        height: 20px;
+        background-color: green;
+        position: absolute;
+    }
+  </style>
+
+</head>
+<body>
+    
+<input type="text" id="pole">
+
+<p>
+Typ zdarzenia:
+<span id="eventType">-----</span>
+</p>
+
+<p>
+Pozycja myszy:
+x = <span id="pageX">-----</span>,
+y = <span id="pageY">-----</span>
+</p>
+
+<div id="kw"></div>
+<div id="jabko"></div>
+
+
+</body>
+</html>

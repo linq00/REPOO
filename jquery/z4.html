@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>strona jquery</title>
+
+        <div id="kw"
+        style="width: 200px;
+        height: 200px;
+        background-color: red;">
+
+        </div >
+<p id="txt"></p>
+            <script
+        src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+        crossorigin="anonymous"></script>
+        
+<script>
+                $(function(){
+                        let licznik =0;
+                    $("#kw").on("click",function(){
+                    licznik++;
+                        $("#txt").text("liczba"+licznik)
+                    })
+                });
+
+
+    </script>
+
+    </head>
+</html>

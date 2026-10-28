@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    .podsw {background-color: yellow;}
+</style>
+</head>
+<body>
+    
+
+<script
+        src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+        crossorigin="anonymous">
+    </script>
+
+
+
+    <script>
+$(function(){
+
+let tekst = $("#tekst");
+$("#zmien").click(function(){
+    tekst.text("nowy")
+})
+
+
+$("#plelacz").click(function(){
+    $("#pudelko").toggle()
+})
+
+
+$(".akapit").click(function(){
+    $(this).toggleClass("podsw")
+})
+
+
+$("#hello").click(function(){
+
+    let imie =  $("#imie").val();
+let wyn = $("#wynik");
+if(imie!=""){  
+    wyn.text("hello"+imie)
+}else{
+      wyn.text("podaj imie")
+}
+
+})
+
+})
+
+    </script>
+
+
+    
+<p id="tekst"> stary text</p>
+<button id="zmien">zmien</button>
+
+<div id="pudelko">widzisz?</div>
+<button id="plelacz">pokaz ukryj</button>
+
+<p class="akapit" id="akapit">akapit</p>
+
+<input type="text" id="imie">
+<button id="hello">hello</button>
+<p  id="wynik"></p>
+
+</body>
+</html>

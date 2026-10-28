@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .start{
+        width: 80px;
+        height: 50px;
+    }
+    .k{
+           width: 50px;
+        height: 50px;
+        background-color: yellow;
+        position: absolute;
+        border-radius: 50px;
+    }
+</style>
+<body>
+ <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+  <script>
+$(function(){
+
+let start  = $(".start");
+   let k = $(".k");
+    start.on('click', function(){
+           
+            k.css({
+               "margin-left": Math.floor((Math.random()*1000)+1) +"px",
+                  "margin-top": Math.floor((Math.random()*1000)+1) +"px"
+            })
+            
+    })
+
+
+    let licz=0;
+    k.on("click", function(){
+        licz++
+        $("#ile").text(licz)
+        $(this).hide()
+        appear()
+          $(this).show()
+
+    })
+
+    function appear(){
+k.css({
+       "margin-left": Math.floor((Math.random()*1000)+1) +"px",
+                  "margin-top": Math.floor((Math.random()*1000)+1) +"px"
+})
+
+    }
+
+
+})
+</script>
+
+<button class="start">start</button>
+<p id="ile">ile</p>
+<div class="k"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+<ul id="lista">
+    <li data-cena="10">Chleb</li>
+    <li data-cena="25">Ser</li>
+    <li data-cena="5">Woda</li>
+    <li data-cena="40">Szynka</li>
+</ul>
+<p id="suma"></p>
+
+
+       <script
+        src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+        crossorigin="anonymous">
+    </script>
+    <script>
+
+$(function(){
+
+let suma =0;
+
+$("li").each(function(){
+    suma+=$(this).data("cena");
+    if($(this).data("cena")>=20){
+        $(this).addClass("drogo")
+    }
+    //  $("li").even().css({
+    // "background-color":"grey"
+})
+ $("#suma").text("suma"+suma)
+
+$("li").each(function(index,el){
+if(index%2==0){
+    $(this).css({
+    "background-color":"grey"
+    })
+    
+
+}
+
+
+$("li").each(function(){
+
+if($(this).data("cena")>=20){
+    $(this).css({
+    "background-color":"blue"
+    })
+    return false
+
+}
+
+})
+
+})
+})
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

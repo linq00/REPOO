@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+                  // event.key zwraca nazwę klawisza (np. "Enter", "ArrowUp", "a")
+              
+            //   $("#szukaj").on("keydown", function(e){
+
+            //     if(event.key === "Enter"){
+            //                 let tekst = $(this).val().trim()
+            //         if(tekst === ""){
+            //                 $("#wynik").css("color","red").text("wpisdz")
+            //         }else{
+            //                 $("#wynik").css("color","black").text("szukam" + tekst)
+            //         }
+
+            //    }
+            //     if(event.key === "Escape"){
+            //       
+            //         $(this).val("");
+            //  $("#wynik").text("");
+            //    }
+              
+            //   })
+                  
+
+    $("#haslo").on("input", function(){
+        let haslo = $("#haslo").val()
+$("#sila").removeClass("slabe srednie silne");
+            if(haslo.length <6){
+                $("#sila").text("slabe")
+                $("#sila").addClass("slabe")
+            }else if(haslo.length >=6 && haslo.length<=9){
+                 $("#sila").text("srednie")
+                 
+                $("#sila").addClass("srednie")
+            }else if(haslo.length >=10){
+
+                 $("#sila").text("silne")  
+                $("#sila").addClass("silne")
+            }
+    })
+
+$("#form").submit(function(e){
+    e.preventDefault()
+    let login = $("#login").val().trim()
+    let pass = $("#pass").val()
+    if(login ==""){
+        $("#info").text("wprowadz login")
+    }else{
+        $("#info").css("color", "green").text("witaj "+ login)
+    }
+    if(pass ==""){
+        $("#info").text("wprowadz pass")
+    }else if(pass.length <=6){
+        $("#info").text("zakrotki pass")
+    }
+
+})
+
+
+$("#rozmiar").on("change", function(){
+    let rozmiar = $(this).val()
+    $("#tekst").css("font-size", rozmiar + "px")
+    $("#tekst").text("Aktualny rozmiar: "+ rozmiar +"px")
+})
+// ято такое  $("this") и $(this)
+
+
+$(".dodatek").on("change", function(){
+    let suma = 20
+    $(".dodatek:checked").each(function(){
+        suma += Number($(this).val())
+    })
+    $("#suma").text(suma)
+
+   $("#akcept").on("change", function(){
+    if($(this).is(":checked")){
+        $("#zamow").removeAttr("disabled")
+    }else{
+        $("#zamow").attr("disabled", "true  ")
+    }
+   })
+})
+
+$("#licz").on("click", function(){
+
+})
+
+
+  //
+})
+        </script>
+
+        <style>
+/* klasy zad2 */
+
+
+        </style>
+    <!-- Zadanie 1: Wyszukiwarka z klawiszami -->
+
+<input type="text" id="szukaj" placeholder="Szukaj...">
+<p id="wynik"></p>
+
+<!-- Po wciśnięciu Enter wypisz w #wynik: „Szukam: [tekst]”. Jeśli pole jest puste (po trim()), wypisz „Wpisz frazę!” na czerwono.
+Po wciśnięciu Escape wyczyść pole i #wynik.
+
+Zadanie 2: Limit długości hasła -->
+
+<input type="password" id="haslo">
+<p id="sila"></p>
+<!-- 
+Przy każdym zdarzeniu input sprawdzaj długość hasła:
+-mniej niż 6 znaków → „Słabe”, klasa .slabe (czerwone tło),
+-6–9 znaków → „Średnie”, klasa .srednie (pomarańczowe),
+-10 i więcej → „Silne”, klasa .silne (zielone).
+
+Zadanie 3: Formularz logowania -->
+
+<form id="form">
+  <input type="text" id="login" placeholder="Login">
+  <input type="password" id="pass" placeholder="Hasło">
+  <button type="submit">Zaloguj</button>
+</form>
+<p id="info"></p>
+<!-- 
+Zablokuj wysłanie formularza (preventDefault). Jeśli login jest pusty → „Podaj login”.
+ Jeśli hasło ma mniej niż 6 znaków → „Hasło za krótkie”.
+  W przeciwnym razie → „Witaj, [login]!” na zielono.
+
+ (preventDefault)„Zatrzymaj domyślną akcję przeglądarki,
+  czyli nie przeładowuj strony po kliknięciu przycisku submit”.
+
+Zadanie 4: Wybór rozmiaru czcionki -->
+
+<select id="rozmiar">
+  <option value="14">Mały</option>
+  <option value="20">Średni</option>
+  <option value="28">Duży</option>
+</select>
+<p id="tekst">Przykładowy tekst akapitu.</p>
+
+<!-- Po zmianie opcji ustaw font-size akapitu #tekst na wybraną wartość w pikselach. 
+ Dodatkowo wypisz pod spodem „Aktualny rozmiar: X px”.
+
+Zadanie 5: Zamówienie z dodatkami -->
+
+<label><input type="checkbox" class="dodatek" value="3"> Ser (3 zł)</label>
+<label><input type="checkbox" class="dodatek" value="5"> Szynka (5 zł)</label>
+<label><input type="checkbox" class="dodatek" value="4"> Pieczarki (4 zł)</label>
+<p>Cena: <span id="suma">20</span> zł</p>
+<label><input type="checkbox" id="akcept"> Potwierdzam zamówienie</label>
+<button id="zamow" disabled>Zamów</button>
+<!-- Cena bazowa to 20 zł. 
+ Po zaznaczeniu lub odznaczeniu dodatku przelicz sumę
+  (wskazówka: $(".dodatek:checked").each(...) i Number()).
+Przycisk „Zamów” jest aktywny tylko, gdy zaznaczono #akcept.
+cd C:\Users\liaty\OneDrive\Рабочий стол\REPO\jquery
+Zadanie 6: Kalkulator BMI z walidacją -->
+
+<input type="text" id="waga" placeholder="Waga (kg)">
+<input type="text" id="wzrost" placeholder="Wzrost (cm)">
+<button id="licz">Oblicz</button>
+<p id="bmi"></p>
+<!-- 
+Po kliknięciu sprawdź:
+
+czy oba pola są wypełnione (trim()),
+czy to liczby (isNaN),
+czy waga mieści się w zakresie 20–300, a wzrost w zakresie 100–250.
+
+Przy błędzie wypisz odpowiedni komunikat na czerwono. Jeśli wszystko jest w porządku, wylicz BMI (waga / (wzrost/100)²), zaokrąglij do 1 miejsca (toFixed(1)) i wypisz wynik. -->
+</body>
+</html>

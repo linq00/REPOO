@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>strona glowna</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+                $("#kolor").change(function() {
+                    $("body").css("background-color",$(this).val())
+                })
+
+                $("#pizza").change(function(){
+                      $("#napis").text("do zaplaty"+$(this).val()+"zl")
+                })
+
+
+
+                $("#newsletter").change(function(){
+                    if($(this).is(":checked")){
+                $("#stan").text("zapisany")
+                    }else{
+                $("#stan").text("wypisano")
+                    }
+                })
+
+                $("#regulamin").change(function(){
+                    if($(this).is(":checked")){
+                $("#button_zarejestruj").prop("disabled", false)
+                    }else{
+                $("#button_zarejestruj").prop("disabled", false)
+                    }
+                })
+                    //  $("#button_zarejestruj").prop("disabled", !$(this).is(":checked"))
+
+$("#tekst").on("input", function(){
+    $("#podglad").text($(this).val())
+})
+
+$("#textarea").on("input", function(){
+let charleft = 100 - $(this).val().length
+  $("#licznik").text(charleft)
+  if(charleft<10){
+      $("#licznik").css("color","red")
+  }else{
+    $("#licznik").css("color","black")
+  }
+})
+
+
+                //
+            })
+
+
+        </script>
+        <style>
+         
+            
+        </style>
+    </head>
+    <body>
+         <select name="kolor" id="kolor">
+            <option value="white">bialy</option>
+            <option value="yellow">zolty</option>
+            <option value="lightblue">niebieski</option>
+         </select>
+    <hr>
+        <select name="pizza" id="pizza">
+            <option value="20">mala</option>
+            <option value="30">srednia</option>
+            <option value="40">duza</option>
+         </select>
+         <p id="napis"></p>
+
+    <hr>
+        <input type="checkbox" name="checkbox" id="newsletter">newsletter
+        <p id="stan"></p>
+  <hr>
+        <input type="checkbox" name="checkbox" id="regulamin">regulamin
+        <button id="button_zarejestruj" disabled>zarejestruj</button>
+  <hr>
+         <input type="text" id="tekst">
+         <p>podglad: <span id="podglad"></span></p>
+<hr>
+         <textarea id="textarea" maxlength="100"></textarea>
+         <p id="licznik"></p>
+<hr>
+
+
+
+    </body>
+</html>

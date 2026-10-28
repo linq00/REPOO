@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>strona glowna</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+             $("#sprawdz").click(function(){
+                let imie = $("#imie").val().trim()
+                if(imie === ""){
+                    $("#blad").text("wymagane")
+                }else{
+                      $("#blad").text("imie")
+                }
+             })
+
+             $("#wyslij").click(function(){
+
+             })
+
+             $("#sprawdz_wiek").click(function(){
+                    let wiek = $("#wiek").val()
+                    if(isNaN(wiek)){
+                        $("#blad_wiek").text("wiek musi syc liczba")
+                    }else{
+                         $("#blad_wiek").text("wiek")
+                    }
+             })
+
+             $("#sprawdz_ocena").click(function(){
+                let ocena = $("#ocena").val()
+
+                if(isNan(ocena)){
+                    $("#blad_ocena").text("ocena musi syc liczba") 
+                }else if(ocena<=0 || ocena>=6){
+                          $("#blad_ocena").text("1 -6") 
+                }
+
+             })
+
+  //
+})
+        </script>
+        <!--  -->
+        <style>
+         
+
+            
+        </style>
+        <!--  -->
+    </head>
+    <body>
+    <!--  -->
+<input type="text" id="imie">
+<button id="sprawdz">sprawdz</button>
+<p id="blad"></p>
+<hr>
+
+<form>
+<label for="nazw">nazwisko</label>
+<input type="text" id="nazw" name="nazw">
+<button id="wyslij">wyslij</button>
+<p id="blad"></p>
+</form>
+
+<hr>
+
+<input type="text" id="wiek" name="wiek">
+<button id="sprawdz_wiek">wyslij</button>
+<p id="blad_wiek"></p>
+        <!--  -->
+
+<input type="text" id="ocena" name="ocena">
+<button id="sprawdz_ocena">wyslij</button>
+<p id="blad_ocena"></p>
+
+
+    </body>
+</html>

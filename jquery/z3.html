@@ -1,0 +1,56 @@
+
+<html >
+    <head>
+    
+    </head>
+        <body>
+          
+<script src="https://code.jquery.com/jquery-4.0.0.js"
+  integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+  crossorigin="anonymous">
+</script>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Zdarzenie click</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    #kwadrat { width: 150px; height: 150px; background: lightgray; }
+  </style>
+</head>
+<body>
+  <button id="przywitaj">Przywitaj się</button>
+  <p id="komunikat"></p>
+ 
+  <div id="kwadrat"></div>
+ 
+  <script>
+    $(function() {
+      // tutaj piszesz swój kod
+    });
+  </script>
+</body>
+</html>
+
+  <script>
+    $(function(){
+        $("button").on("click",function(){
+            console.log("test")
+        })
+         $("button").click(function(){
+            console.log("test2")
+        })
+
+         $("button").click(function(){
+            alert("hello"); 
+            $("p").prepend("hello");
+        })
+       
+        
+    });
+  </script>
+           
+        </body>
+</html>

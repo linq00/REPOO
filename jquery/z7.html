@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <li data-cena="2875"><a href="#" id="1">Cyberpunk 2077</a></li>
+        <li data-cena="285"><a href="#">Elden Ring</a></li>
+        <li data-cena="265"><a href="#" class="link">Baldur's Gate 3</a></li>
+        <li data-cena="245"><a href="#" class="link">Starfield</a></li>
+        <li data-cena="265"><a href="#" class="link">Hollow Knight</a></li>
+
+        
+    <script
+        src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+        crossorigin="anonymous">
+    </script>
+        
+<script>
+            $(function(){
+
+         $("li a").each(function(){
+            console.log("to est el o id:" +$(this))
+         })   
+
+        $("li").each(function(index,el){
+            console.log(index+":"+$(this).text())
+        })
+
+        $("li").each(function(index,el){
+            console.log($(this).data("cena"))
+        })
+        // roznica i jesli jest cena to jak liczba int/licz
+
+          $("li").each(function(index,el){
+            console.log($(this).data("data-cena"))
+        })
+        // a jezeli jak attr to string
+
+        })
+    
+</script>
+
+</body>
+</html>
