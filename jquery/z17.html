@@ -90,9 +90,62 @@ $(".dodatek").on("change", function(){
    })
 })
 
-$("#licz").on("click", function(){
 
-})
+// $("#licz").on("click", function(){
+//     let waga = $("#waga").val().trim()
+//     let wzrost = $("#wzrost").val().trim()
+
+//     if(waga === "" || wzrost ===""){
+//         $("#bmi").text("jedno z pol nie uzupelnione")
+
+//     }
+//     else if(isNaN(waga) || isNaN(wzrost)){
+//         $("#bmi").text("wprowadzaj liczby")
+//     }
+//     else if(waga<=20 || waga>=300){
+//     $("#bmi").text("wprow morm wage")
+//     }
+//     else if(wzrost<=100 || wzrost>=250){
+//     $("#bmi").text("wprow morm wage")
+//     }else{
+
+//         let wagaNum = Number(waga);
+//             let wzrostNum = Number(wzrost);
+//     let wzrostMetry = wzrostNum / 100;
+//             let bmi = (wagaNum / Math.pow(wzrostMetry, 2)).toFixed(1);
+//     $("#bmi").text(bmi) 
+//     }
+// })
+
+
+
+$("#licz").on("click", function() {
+    let waga = $("#waga").val().trim();
+    let wzrost = $("#wzrost").val().trim();
+
+    if (waga === "" || wzrost === "") {
+        $("#bmi").css("color", "red").text("Uzupełnij oba pola!");
+    }
+    else if (isNaN(waga) || isNaN(wzrost)) {
+        $("#bmi").css("color", "red").text("Wprowadź liczby!");
+    }
+    else if (Number(waga) < 20 || Number(waga) > 300) {
+        $("#bmi").css("color", "red").text("Waga musi być w zakresie 20–300 kg!");
+    }
+    else if (Number(wzrost) < 100 || Number(wzrost) > 250) {
+        $("#bmi").css("color", "red").text("Wzrost musi być w zakresie 100–250 cm!");
+    }
+    else {
+        let wagaNum = Number(waga);
+        let wzrostNum = Number(wzrost);
+        let wzrostMetry = wzrostNum / 100;
+
+        let bmi = (wagaNum / Math.pow(wzrostMetry, 2)).toFixed(1);
+
+        $("#bmi").css("color", "green").text("Twoje BMI: " + bmi);
+    }
+});
+
 
 
   //
@@ -163,6 +216,7 @@ Zadanie 5: Zamówienie z dodatkami -->
   (wskazówka: $(".dodatek:checked").each(...) i Number()).
 Przycisk „Zamów” jest aktywny tylko, gdy zaznaczono #akcept.
 cd C:\Users\liaty\OneDrive\Рабочий стол\REPO\jquery
+
 Zadanie 6: Kalkulator BMI z walidacją -->
 
 <input type="text" id="waga" placeholder="Waga (kg)">
@@ -176,6 +230,7 @@ czy oba pola są wypełnione (trim()),
 czy to liczby (isNaN),
 czy waga mieści się w zakresie 20–300, a wzrost w zakresie 100–250.
 
-Przy błędzie wypisz odpowiedni komunikat na czerwono. Jeśli wszystko jest w porządku, wylicz BMI (waga / (wzrost/100)²), zaokrąglij do 1 miejsca (toFixed(1)) i wypisz wynik. -->
+Przy błędzie wypisz odpowiedni komunikat na czerwono. Jeśli wszystko jest w porządku,
+ wylicz BMI (waga / (wzrost/100)²), zaokrąglij do 1 miejsca (toFixed(1)) i wypisz wynik. -->
 </body>
 </html>

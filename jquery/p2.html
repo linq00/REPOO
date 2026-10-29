@@ -1,0 +1,124 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+  <title>strona glowna</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+      
+      <script>
+            $(function() {
+//              Zadanie 11: Karty 
+// Po kliknięciu „Dodaj kartę” dodaj div.card do #container i zwiększ licznik.
+//  Maksymalnie 10 kart — przy 10. kracie wypisz pod licznikiem „Pełno!” i zablokuj przycisk dodawania.
+//   „Usuń wszystkie” usuwa karty (nie usuwaj akapitu z licznikiem), 
+//   zeruje licznik i odblokowuje przycisk.
+// Подсказка: $(".card").remove(), $(".card").length, .prop("disabled", true).
+//  Это завершение недоделанного z13.
+   let licz = 0
+$("#dodaj").on("click", function(){
+ 
+
+    if(licz<10){
+          $("#container").append("<div class='card'></div>")
+            licz++ 
+            $("#licznik").text(licz);
+    }
+  if(licz ==10){
+    $("#dodaj").prop("disabled","true")
+        $("#container").append("<p id='kom' style='color: red; font-weight: bold;'>pelno</p>")
+  }
+})
+$("#usun").on("click", function(){
+
+    $(".card").remove()
+    licz =0
+ $("#licznik").text("");
+    $("#kom").remove()
+     $("#dodaj").prop("disabled", "false");
+
+})
+
+
+// Zadanie 20: Zakładki z data-*
+
+// Kliknięcie w zakładkę: ukryj wszystkie panele, pokaż panel,
+//  którego id jest zapisane w data-panel klikniętego przycisku ("#" + ...),
+//   a klasę .aktywna zostaw tylko na klikniętej zakładce.
+//    W #info wypisz „Otwarto panel: X” (X — tekst przycisku).
+//     Po załadowaniu strony domyślnie aktywna jest pierwsza zakładka (.eq(0).click() albo ręcznie).
+// Подсказка: $(this).data("panel") (без data-),
+//  $("#" + id).show(), .eq(0).click() вызывает обработчик вручную.
+
+
+$(".zakladka").on("click", function(){
+let id = $(this).data("panel")
+let button = $(this).text()
+
+        $(".panel").hide()  
+        $(this).data("#"+ id).show()
+        $(this).addClass("aktywna")
+
+$(".zakladka").removeClass("aktywna");
+$(this).addClass("aktywna");
+
+
+        })
+      
+       $("#info").text("Otwarto panel: " + nazwaPrzycisku);
+$(".zakladka").eq(0).click();
+  //
+})
+    </script>
+
+        
+    
+        <style>
+        .card { width: 80px;
+            height: 100px;
+            background: lightblue; 
+            margin: 5px; 
+            display: inline-block; }
+
+        .panel { display: none; }
+        .aktywna { background: gold; }
+
+            /*  */
+        </style>
+
+
+
+
+
+
+<body>
+      
+
+
+<button id="dodaj">Dodaj kartę</button>
+<button id="usun">Usuń wszystkie</button>
+<div id="container">
+  <p>Liczba kart: <span id="licznik">0</span></p>
+</div>
+
+
+
+<button class="zakladka" data-panel="p1">Opis</button>
+<button class="zakladka" data-panel="p2">Cennik</button>
+<button class="zakladka" data-panel="p3">Kontakt</button>
+<div class="panel" id="p1">Opis firmy</div>
+<div class="panel" id="p2">Cennik usług</div>
+<div class="panel" id="p3">Dane kontaktowe</div>
+<p id="info"></p>
+
+        <!--  -->
+</body>
+</html>
+
+
+

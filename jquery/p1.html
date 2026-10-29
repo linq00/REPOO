@@ -1,0 +1,154 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+  <title>strona glowna</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+      
+      <script>
+            $(function() {
+              
+// Po kliknięciu #plus zwiększ licznik o 1. Gdy licznik jest większy niż 5,
+//  wyświetl go na czerwono. #reset zeruje licznik i przywraca kolor czarny.
+// Подсказка: let n = 0 снаружи обработчика (как z4).
+
+ let licz =0
+$("#plus").on("click", function(){
+    licz++
+     
+      if(licz>5){
+    $("#licznik").css("color","red").text(licz)
+ }else{
+      $("#licznik").css("color","black").text(licz)
+ }
+ 
+})
+
+$("#reset").on("click", function(){
+    licz =0
+     if(licz<5){
+    $("#licznik").css("color","black").text(licz)
+ }
+})
+
+//                 Zadanie 5: Zaznacz wszystkie
+// #wszystkie zaznacza lub odznacza wszystkie .opcja.
+//  W #ile wypisz „Zaznaczono: X z 3” (aktualizuj też po kliknięciu pojedynczej opcji).
+// Подсказка: .prop("checked", ...), $(".opcja:checked").length.
+
+
+$("#wszystkie").on("change", function(){
+    $(".opcja").prop("checked", "true")
+
+ $(".opcja:checked").each(function(){
+    let lizc = 0 
+    licz++
+ })
+ $("#ile").text(licz)
+
+})
+
+// Zadanie 6: Lista zakupów z usuwaniem
+// Po kliknięciu #dodaj dodaj <li> z tekstem pola. Jeśli pole jest puste (po trim()), wypisz w #blad „Wpisz nazwę!” na czerwono.
+//  Po dodaniu wyczyść pole. Kliknięcie w <li> usuwa go.
+// Подсказка: вычистить поле — $("#produkt").val("") (не как в z5!).
+//  Клик по динамически созданным li: $("#lista").on("click", "li", function(){ $(this).remove(); }) (делегирование; если преподаватель не проходил — это повышенная сложность).
+// Уровень 2 — база (7–13)
+
+
+
+$("#dodaj").on("click", function(){
+
+    let produkt = $("#produkt").val().trim()
+
+     if(produkt === ""){
+            $("#blad").text("wpisz produkt")
+        }else{
+   $("#lista").append("<li class='nowy'>"+produkt+"</li>")
+       $("#produkt").val("")
+
+        }
+     
+      
+})
+  $("#lista").on("click","li", function(){
+$(this).remove()
+  })
+
+// Zadanie 8: Formularz rejestracji
+// Zablokuj wysłanie formularza (preventDefault).
+// Sprawdzaj kolejno: login co najmniej 3 znaki → e-mail zawiera „@” → hasło co najmniej 8 znaków
+//  → hasła są takie same. Pierwszy błąd wypisz na czerwono; 
+//  jeśli wszystko OK — „Konto utworzone!” na zielono.
+
+
+$("#rejestracja").on("submit", function(e){
+    e.preventDefault()
+let login =$("#login").val().trim()
+let email =$("#email").val().trim()
+let pass1 =$("#pass1").val().trim()
+let pass2 =$("#pass2").val().trim()
+let info = $("#info")
+if(login.length <=3){
+info.text("loin musi byc >3")
+}else if(!email.includes("@")){
+    info.text("email musi b@")
+}else if(pass1.length <8 && pass1.length <8){
+    info.text("pass musie miec 8 znakow")
+}else if(pass1 !==pass2){
+    info.css("color", "red").text("passy musa byc takie same")
+}else{
+      info.css("color", "green").text("goood")
+}
+
+})
+
+
+            })
+    </script>
+
+        
+        <!--  -->
+        <style>
+        
+            /*  */
+        </style>
+<body>
+            <button id="plus">+1</button>
+        <button id="reset">Reset</button>
+        <p>Licznik: <span id="licznik">0</span></p>
+                <!--  -->
+
+
+<label><input type="checkbox" id="wszystkie"> Zaznacz wszystkie</label>
+<label><input type="checkbox" class="opcja"> A</label>
+<label><input type="checkbox" class="opcja"> B</label>
+<label><input type="checkbox" class="opcja"> C</label>
+<p id="ile"></p>
+
+
+
+<input type="text" id="produkt">
+<button id="dodaj">Dodaj</button>
+<ul id="lista"></ul>
+<p id="blad"></p>
+
+
+
+<form id="rejestracja">
+  <input type="text" id="login" placeholder="Login">
+  <input type="text" id="email" placeholder="E-mail">
+  <input type="password" id="pass1" placeholder="Hasło">
+  <input type="password" id="pass2" placeholder="Powtórz hasło">
+  <button type="submit">Zarejestruj</button>
+</form>
+<p id="info"></p>
+
+</body>
+</html>
